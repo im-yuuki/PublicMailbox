@@ -1,0 +1,37 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "Node";
+package Node;
+
+service NodeService {
+  rpc Query (QueryRequest) returns (QueryResponse);
+  rpc Purge (PurgeRequest) returns (PurgeResponse);
+}
+
+message QueryRequest {
+  string username = 1;
+  string domain = 2;
+}
+
+message QueryResponse {
+  repeated MailContent list = 1;
+}
+
+message MailContent {
+  uint64 id = 1;
+  string subject = 2;
+  string sender = 3;
+  string recipient = 4;
+  string body = 5;
+  string time = 6;
+  string contentType = 7;
+}
+
+message PurgeRequest {
+  string username = 1;
+  string domain = 2;
+}
+
+message PurgeResponse {
+  bool success = 1;
+}

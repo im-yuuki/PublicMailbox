@@ -1,0 +1,16 @@
+@Backend_HostAddress = http://localhost:5270
+
+GET {{Backend_HostAddress}}/inbox/
+Accept: application/json
+
+###
+
+GET {{Backend_HostAddress}}/content/
+Accept: application/json
+
+###
+
+POST {{Backend_HostAddress}}/purge/
+Accept: application/json
+
+###

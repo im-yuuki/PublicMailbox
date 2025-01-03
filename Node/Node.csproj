@@ -4,12 +4,13 @@
         <TargetFramework>net9.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
-        <RootNamespace>Node</RootNamespace>
+        <RootNamespace>PublicMailbox.Node</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="Grpc.AspNetCore" Version="2.64.0"/>
         <PackageReference Include="IdGen" Version="3.0.7" />
+        <PackageReference Include="MimeKit" Version="4.9.0" />
         <PackageReference Include="SmtpServer" Version="10.0.1" />
     </ItemGroup>
     

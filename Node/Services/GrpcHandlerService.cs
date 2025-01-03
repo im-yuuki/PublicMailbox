@@ -1,8 +1,9 @@
 ﻿using Grpc.Core;
+using Node;
 
-namespace Node.Services;
+namespace PublicMailbox.Node.Services;
 
-public class ApiHandlerService : NodeService.NodeServiceBase
+public class GrpcHandlerService(ILogger<GrpcHandlerService> logger) : NodeService.NodeServiceBase
 {
     public sealed override Task<QueryResponse> Query(QueryRequest request, ServerCallContext context)
     {

@@ -1,8 +1,6 @@
-﻿using System.Globalization;
+﻿namespace PublicMailbox.Node.Data;
 
-namespace Node.Data;
-
-public record MailContent(
+public record MailRecord(
     UInt64 Id,
     string Subject,
     string Sender,
@@ -13,7 +11,7 @@ public record MailContent(
     string ContentType
 )
 {
-    public static MailContent CreateRecord()
+    public static MailRecord CreateRecord()
     {
         return null;
     }

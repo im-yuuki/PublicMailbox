@@ -1,7 +1,7 @@
 ﻿syntax = "proto3";
 
 option csharp_namespace = "Node";
-package Node;
+package PublicMailbox.Node;
 
 service NodeService {
   rpc Query (QueryRequest) returns (QueryResponse);

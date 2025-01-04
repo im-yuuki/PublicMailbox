@@ -3,7 +3,6 @@
 namespace PublicMailbox.SmtpReceiver.Data;
 
 public record MailRecord(
-    Int64 Id,
     string Subject,
     string Sender,
     string RecipientName,
@@ -15,7 +14,6 @@ public record MailRecord(
     public static MailRecord CreateRecord(IMimeMessage message)
     {
         return new MailRecord(
-            Id: 0,
             Subject: message.Subject,
             Sender: message.From.ToString(),
             RecipientName: message.To.Mailboxes.FirstOrDefault()?.Address ?? "",

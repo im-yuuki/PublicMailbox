@@ -4,18 +4,15 @@
         <TargetFramework>net9.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
-        <RootNamespace>PublicMailbox.Node</RootNamespace>
+        <RootNamespace>PublicMailbox.SmtpReceiver</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="ConsistentHash" Version="1.0.2" />
         <PackageReference Include="Grpc.AspNetCore" Version="2.64.0"/>
         <PackageReference Include="IdGen" Version="3.0.7" />
         <PackageReference Include="MimeKit" Version="4.9.0" />
         <PackageReference Include="SmtpServer" Version="10.0.1" />
-    </ItemGroup>
-    
-    <ItemGroup>
-        <Protobuf Include="node.proto" GrpcServices="Server"/>
     </ItemGroup>
 
 </Project>

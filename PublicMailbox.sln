@@ -1,8 +1,10 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backend", "Backend\Backend.csproj", "{74E078CF-2FAC-42DD-A1EC-FCDE61E0FA06}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gateway", "Gateway\Gateway.csproj", "{74E078CF-2FAC-42DD-A1EC-FCDE61E0FA06}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Node", "Node\Node.csproj", "{F677A180-F051-411D-A093-5A3993FF883D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmtpReceiver", "SmtpReceiver\SmtpReceiver.csproj", "{F677A180-F051-411D-A093-5A3993FF883D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database", "Database\Database.csproj", "{7C65332A-CF7C-4E16-A214-DF8DE3078B65}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +20,9 @@ Global
 		{F677A180-F051-411D-A093-5A3993FF883D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F677A180-F051-411D-A093-5A3993FF883D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F677A180-F051-411D-A093-5A3993FF883D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C65332A-CF7C-4E16-A214-DF8DE3078B65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C65332A-CF7C-4E16-A214-DF8DE3078B65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C65332A-CF7C-4E16-A214-DF8DE3078B65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C65332A-CF7C-4E16-A214-DF8DE3078B65}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

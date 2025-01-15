@@ -6,9 +6,15 @@ using SmtpServer.Storage;
 
 namespace PublicMailbox.SmtpReceiver.Services;
 
-public class RemoteStorageService(ILogger<RemoteStorageService> logger, IConfiguration configuration) : IMessageStore, IHostedService
+public class StorageService(ILogger<StorageService> logger, IConfiguration configuration) : IMessageStore, IHostedService
 {
     private readonly ConsistentHash<string> _hasher = ConsistentHash.Empty(Comparer<string>.Default);
+    private readonly HashSet<string> _allowedDomains = [];
+    
+    private bool CheckAllowedDomain(string domain)
+    {
+        return _allowedDomains.Count == 0 || _allowedDomains.Contains(domain);
+    }
     
     public async Task<SmtpResponse> SaveAsync(
         ISessionContext context, 
@@ -23,13 +29,25 @@ public class RemoteStorageService(ILogger<RemoteStorageService> logger, IConfigu
         stream.Position = 0;
 
         var message = await MimeKit.MimeMessage.LoadAsync(stream, cancellationToken);
-        logger.LogInformation("Message received: {Subject} [{Sender} -> {Recipient}]", message.Subject, message.From, message.To);
+        logger.LogInformation("Message received: {Subject} [{Sender} -> {Recipient}]", 
+            message.Subject, 
+            message.From.FirstOrDefault(), 
+            message.To.FirstOrDefault()
+            );
 
         return SmtpResponse.Ok;
     }
 
     public Task StartAsync(CancellationToken cancellationToken)
     {
+        _allowedDomains.Clear();
+        foreach (var item in configuration.GetSection("AllowedDomains").GetChildren())
+        {
+            if (item.Value is null) continue;
+            _allowedDomains.Add(item.Value);
+        }
+        if (_allowedDomains.Count == 0) logger.LogWarning("No allowed domains configured. All domains will be accepted.");
+        else logger.LogInformation("Allowing {DomainsCount} domains", _allowedDomains.Count);
         return Task.CompletedTask;
     }
 
